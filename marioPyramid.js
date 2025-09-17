@@ -17,7 +17,8 @@ const PYRAMID_STRATEGIES = [
  * @param {function} builderStrategy algorithm of pyramid building
  */
 function createPyramid(height, builderStrategy) {
-  for (let level = 1; level <= PYRAMID_HEIGHT; level++) {
+  // for each level starting from top build and output pyramid level line
+  for (let level = 1; level <= height; level++) {
     builderStrategy(level, height);
   }
 }
@@ -41,8 +42,9 @@ main();
  * @param {number} level a level position from top
  */
 function buildPyramidLevel_hill(level) {
-  const bricksCount = level;
-  console.log(SYMBOL.repeat(bricksCount));
+  const bricksCount = level; // calculate bricks count
+  const pyramidLineString = SYMBOL.repeat(bricksCount); // create string repeating symbol <brickCount> times
+  console.log(pyramidLineString);
 }
 
 /**
@@ -50,8 +52,9 @@ function buildPyramidLevel_hill(level) {
  * @param {number} level a level position from top
  */
 function buildPyramidLevel_hillWide(level) {
-  const bricksCount = level * 2 - 1;
-  console.log(SYMBOL.repeat(bricksCount));
+  const bricksCount = level * 2 - 1; // calculate bricks count
+  const pyramidLineString = SYMBOL.repeat(bricksCount); // create pyramid level string repeating symbol <brickCount> times
+  console.log(SYMBOL.repeat(pyramidLineString));
 }
 
 /**
@@ -60,10 +63,10 @@ function buildPyramidLevel_hillWide(level) {
  * @param {number} height total levels count (equal to last level)
  */
 function buildPyramidLevel_reversedHill(level, height) {
-  const bricksCount = level;
-  const offset = height - bricksCount;
-  const offsetString = " ".repeat(offset);
-  const pyramidLineString = SYMBOL.repeat(bricksCount);
+  const bricksCount = level; // calculate bricks count
+  const offset = height - bricksCount; // calculate start offset (spaces count before first brick)
+  const offsetString = " ".repeat(offset); // create offset string
+  const pyramidLineString = SYMBOL.repeat(bricksCount); // create pyramid level string
   console.log(offsetString + pyramidLineString);
 }
 
@@ -73,10 +76,10 @@ function buildPyramidLevel_reversedHill(level, height) {
  * @param {number} height total levels count (equal to last level)
  */
 function buildPyramidLevel_reversedHillWide(level, height) {
-  const bricksCount = level * 2 - 1;
-  const offset = height * 2 - 1 - bricksCount;
-  const offsetString = " ".repeat(offset);
-  const pyramidLineString = SYMBOL.repeat(bricksCount);
+  const bricksCount = level * 2 - 1; // calculate bricks count
+  const offset = height * 2 - 1 - bricksCount;  // calculate start offset
+  const offsetString = " ".repeat(offset); // create offset string
+  const pyramidLineString = SYMBOL.repeat(bricksCount); // create pyramid level string
   console.log(offsetString + pyramidLineString);
 }
 
@@ -86,10 +89,10 @@ function buildPyramidLevel_reversedHillWide(level, height) {
  * @param {number} height total levels count (equal to last level)
  */
 function buildPyramidLevel_christmasTree(level, height) {
-  const bricksCount = level * 2 - 1;
-  const offset = height - level;
-  const offsetString = " ".repeat(offset);
-  const pyramidLineString = SYMBOL.repeat(bricksCount);
+  const bricksCount = level * 2 - 1; // calculate bricks count
+  const offset = height - level; // calculate start offset
+  const offsetString = " ".repeat(offset); // create offset string
+  const pyramidLineString = SYMBOL.repeat(bricksCount); // create pyramid level string
   console.log(offsetString + pyramidLineString);
 }
 
@@ -99,9 +102,9 @@ function buildPyramidLevel_christmasTree(level, height) {
  * @param {number} height total levels count (equal to last level)
  */
 function buildPyramidLevel_christmasTreeSpaced(level, height) {
-  const bricksCount = level;
-  const offset = height - bricksCount;
-  const offsetString = " ".repeat(offset);
-  const pyramidLineString = `${SYMBOL} `.repeat(bricksCount).trimEnd();
+  const bricksCount = level; // calculate bricks count
+  const offset = height - bricksCount; // calculate start offset
+  const offsetString = " ".repeat(offset); // create offset string
+  const pyramidLineString = `${SYMBOL} `.repeat(bricksCount).trimEnd(); // repeat <SYMBOL + space> and cut last space
   console.log(offsetString + pyramidLineString);
 }
